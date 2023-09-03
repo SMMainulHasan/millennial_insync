@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section class="section-content padding-y">
+    <div class="card mx-auto" style="max-width: 520px; margin-top: 40px">
+        <article class="card-body form-group">
+            <header class="mb-4">
+                <h4 class="card-title">Sign in</h4>
+            </header>
+            <form method="post">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                <div class="form-group">
+                    <label>password</label>
+                    <br />
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </article>
+    </div>
+    <p class="text-center mt-4"> Don't have an account? <a class="text-primary" href="{% url 'register' %}">Register</a></p>
+    <br /><br />
+</section>
+{% endblock main %}
