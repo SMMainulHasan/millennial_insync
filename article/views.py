@@ -24,6 +24,23 @@ def create_article(request):
         
     return render(request, 'article/create_article.html', {'form': form})
 
+#Update or post article 
+def create_article(request):
+    form = ArticleCreateForm()
+    if request.method == 'POST':
+        form = ArticleCreateForm(request.POST)
+        if form.is_valid():
+            data = Article()
+            data.writer = request.user
+            data.headline = request.POST.get('headline')
+            data.tags = request.POST.get('tags')
+            data.body = request.POST.get('body')
+            data.img = request.POST.get('img')
+            data.category = form.cleaned_data['category']
+            data.save()
+            return redirect("home")
+        
+    return render(request, 'article/create_article.html', {'form': form})
 
 #Category wise article view all
 def category_article_view(request, category_slug):
