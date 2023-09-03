@@ -71,10 +71,7 @@
                                         {% if not request.user.is_authenticated %}
                                         <a class="text-danger" href='{% url 'register' %}'><strong>Register</strong></a> 
                                         {% else %}
-                                        {% if request.user.UserModel.editor %}
-                                        <a class="text-danger" href="{% url 'create_article' %}"><strong>Your Content</strong></a> <strong>|</strong>
-                                        {% endif %}
-                                        <a class="text-danger" href=''><strong>{{ request.user.first_name }} ⁝</strong></a> 
+                                        <a class="text-danger" href="{% url 'profile' %}"><strong><i class="fa fa-user"></i> {{ request.user.first_name}} {{request.user.last_name }}</strong></a> 
                                         {% endif %}
                                         <strong>|</strong>
                                         {% if request.user.is_authenticated %}

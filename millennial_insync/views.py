@@ -4,8 +4,8 @@ from django.shortcuts import render
 from article.models import Article, Category
 
 
+#REQUIREMENTS: show top 2 articles by ratings of each category
 def home(request):
-    #REQUIREMENTS: show top 2 articles by ratings of each category
     #TODO: learn to do this in django query and update bellow
     categories = Category.objects.all()
     articles = []
