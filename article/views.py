@@ -64,7 +64,10 @@ def delete_article(request, article_slug):
 #Category wise article view all
 def category_article_view(request, category_slug):
     articles = Article.objects.filter(category__slug = category_slug)
-    return render(request, 'article/category.html', {'articles': articles})
+    #Sorted by article Ratings
+    articles_avg_rating_annotated = articles.annotate(avg_rating=Avg('review__rating'))
+    sorted_articles = articles_avg_rating_annotated.order_by('-avg_rating')
+    return render(request, 'article/category.html', {'articles': sorted_articles})
 
     
 #Article Detail view
